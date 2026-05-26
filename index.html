@@ -156,24 +156,14 @@
     </footer>
 
     <!-- Crisp Live Chat Integration -->
-    <script type="text/javascript">
-        window.$crisp=[];
-        window.CRISP_WEBSITE_ID="YOUR_CRISP_ID_HERE";
-        (function(){
-            d=document;
-            s=d.createElement("script");
-            s.src="https://client.crisp.chat/l.js";
-            s.async=1;
-            d.getElementsByTagName("head")[0].appendChild(s);
-        })();
+<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="b2ba94c5-4673-479a-a2a7-7b6c8ed5357a";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
 
-        function openLiveChat() {
-            if (window.$crisp) {
-                window.$crisp.push(["do", "chat:open"]);
-            }
+<script>
+    function openLiveChat() {
+        if (window.$crisp) {
+            window.$crisp.push(["do", "chat:open"]);
         }
-    </script>
-
-    <script src="script.js"></script>
+    }
+</script>
 </body>
 </html>
