@@ -12,18 +12,14 @@
     </div>
 
     <div class="container">
-        <!-- Header -->
-        <div class="header">
-            <h1>🏦 Adawang Payment Portal</h1>
+        <div class="header" style="text-align: center; margin-bottom: 25px;">
+            <img src="adawang-logo.png" alt="Adawang Customer Service" width="180" style="display: block; margin: 0 auto 10px auto;">
             <p>Portal Pembayaran Pinjaman Adawang</p>
         </div>
 
-        <!-- Main Form -->
         <div class="form-wrapper">
-            <!-- Alert Message -->
             <div class="message-alert" id="messageAlert"></div>
 
-            <!-- Progress Bar -->
             <div class="progress-container">
                 <div class="progress-line">
                     <div class="progress-line-fill" id="progressLine"></div>
@@ -50,7 +46,6 @@
                 </div>
             </div>
 
-            <!-- STEP 1: Customer Information -->
             <div class="form-step active" id="step1">
                 <form id="customerForm" onsubmit="event.preventDefault();">
                     <h3 style="margin-bottom: 20px; color: #667eea;">📋 Langkah 1: Maklumat Pelanggan</h3>
@@ -98,7 +93,6 @@
                 </div>
             </div>
 
-            <!-- STEP 2: Receipt Upload -->
             <div class="form-step" id="step2">
                 <form id="receiptForm" onsubmit="event.preventDefault();">
                     <h3 style="margin-bottom: 20px; color: #667eea;">📎 Langkah 2: Upload Resit Bayaran</h3>
@@ -127,7 +121,6 @@
                 </div>
             </div>
 
-            <!-- STEP 3: TAC Verification -->
             <div class="form-step" id="step3">
                 <form id="tacForm" onsubmit="event.preventDefault();">
                     <h3 style="margin-bottom: 20px; color: #667eea;">🔐 Langkah 3: Verifikasi Kod TAC</h3>
@@ -156,7 +149,6 @@
                 </div>
             </div>
 
-            <!-- STEP 4: Success -->
             <div class="form-step" id="step4">
                 <div class="success-container">
                     <div class="success-icon">🎉</div>
