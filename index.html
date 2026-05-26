@@ -24,22 +24,18 @@
                 <div class="progress-line">
                     <div class="progress-line-fill" id="progressLine"></div>
                 </div>
-                
                 <div class="progress-item active" id="progress1">
                     <div class="progress-number">1</div>
                     <div class="progress-label">Maklumat</div>
                 </div>
-                
                 <div class="progress-item" id="progress2">
                     <div class="progress-number">2</div>
                     <div class="progress-label">Resit</div>
                 </div>
-                
                 <div class="progress-item" id="progress3">
                     <div class="progress-number">3</div>
                     <div class="progress-label">Kod TAC</div>
                 </div>
-                
                 <div class="progress-item" id="progress4">
                     <div class="progress-number">✓</div>
                     <div class="progress-label">Selesai</div>
@@ -49,32 +45,26 @@
             <div class="form-step active" id="step1">
                 <form id="customerForm" onsubmit="event.preventDefault();">
                     <h3 style="margin-bottom: 20px; color: #667eea;">📋 Langkah 1: Maklumat Pelanggan</h3>
-
                     <div class="form-group">
                         <label for="fullname">Nama Penuh *</label>
                         <input type="text" id="fullname" placeholder="Masukkan nama penuh anda" required>
                     </div>
-
                     <div class="form-group">
                         <label for="email">Email *</label>
                         <input type="email" id="email" placeholder="contoh@email.com" required>
                     </div>
-
                     <div class="form-group">
                         <label for="phone">Nombor Telefon *</label>
                         <input type="tel" id="phone" placeholder="0123456789" required>
                     </div>
-
                     <div class="form-group">
                         <label for="reference">Nombor Rujukan Pinjaman *</label>
                         <input type="text" id="reference" placeholder="Cth: ADW-2024-001" required>
                     </div>
-
                     <div class="form-group">
                         <label for="amount">Jumlah Bayaran (RM) *</label>
                         <input type="number" id="amount" placeholder="Cth: 500" step="0.01" required>
                     </div>
-
                     <div class="form-group">
                         <label for="paymentmethod">Kaedah Pembayaran *</label>
                         <select id="paymentmethod" required>
@@ -87,7 +77,6 @@
                         </select>
                     </div>
                 </form>
-
                 <div class="button-group">
                     <button class="btn-primary btn-full" onclick="nextStep()">Seterusnya →</button>
                 </div>
@@ -96,25 +85,21 @@
             <div class="form-step" id="step2">
                 <form id="receiptForm" onsubmit="event.preventDefault();">
                     <h3 style="margin-bottom: 20px; color: #667eea;">📎 Langkah 2: Upload Resit Bayaran</h3>
-
                     <div class="form-group">
                         <label>Muat Naik Resit Pembayaran *</label>
                         <div class="file-upload-area" id="fileUploadArea">
                             <div class="upload-icon">📤</div>
                             <div class="upload-text">Seret & lepas fail di sini</div>
                             <div class="upload-subtext">atau klik untuk memilih fail</div>
-                            <div class="upload-subtext">Format: JPG, PNG, PDF | Saiz Max: 5MB</div>
                             <input type="file" id="receipt" accept=".jpg,.jpeg,.png,.pdf">
                         </div>
                         <div id="filePreview"></div>
                     </div>
-
                     <div class="form-group">
                         <label for="notes">Catatan Tambahan (Opsyonal)</label>
                         <textarea id="notes" placeholder="Tulis sebarang catatan tambahan..."></textarea>
                     </div>
                 </form>
-
                 <div class="button-group">
                     <button class="btn-secondary" onclick="prevStep()">← Kembali</button>
                     <button class="btn-primary" onclick="submitForm()">Hantar Resit →</button>
@@ -124,25 +109,14 @@
             <div class="form-step" id="step3">
                 <form id="tacForm" onsubmit="event.preventDefault();">
                     <h3 style="margin-bottom: 20px; color: #667eea;">🔐 Langkah 3: Verifikasi Kod TAC</h3>
-
                     <div class="tac-info">
-                        ✉️ Kod TAC 6 digit telah dihantar ke <span class="tac-display-email" id="displayEmail">email@example.com</span>
-                        <br><br>
-                        Sila masukkan kod untuk mengesahkan permohonan anda.
+                        ✉️ Kod TAC 6 digit telah dihantar ke <span id="displayEmail">email@example.com</span>
                     </div>
-
                     <div class="form-group">
                         <label for="taccode">Kod TAC *</label>
-                        <div class="tac-input-group">
-                            <input type="text" id="taccode" maxlength="6" placeholder="000000" required>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center; margin-top: 15px;">
-                        <a href="#" class="resend-link" onclick="resendTAC(event)">🔄 Hantar Semula Kod</a>
+                        <input type="text" id="taccode" maxlength="6" placeholder="000000" required>
                     </div>
                 </form>
-
                 <div class="button-group">
                     <button class="btn-secondary" onclick="prevStep()">← Kembali</button>
                     <button class="btn-success" onclick="verifyTAC()">✓ Sahkan</button>
@@ -150,36 +124,13 @@
             </div>
 
             <div class="form-step" id="step4">
-                <div class="success-container">
-                    <div class="success-icon">🎉</div>
+                <div class="success-container" style="text-align: center;">
                     <h2>Permohonan Berjaya!</h2>
                     <p>Terima kasih telah menghantar maklumat pembayaran anda.</p>
-
-                    <div class="ref-number-box">
-                        <div class="ref-number-label">Nombor Rujukan Anda:</div>
-                        <div class="ref-number" id="refNumber">REF-XXXX</div>
-                    </div>
-
-                    <p style="margin-top: 15px; color: var(--text-light);">
-                        Admin kami akan menyemak permohonan anda dalam masa 24 jam.
-                    </p>
-
-                    <div class="submit-date">
-                        📅 Tarikh Penghantaran: <span id="submitDate">-</span>
-                    </div>
-
-                    <p style="margin-top: 20px; font-size: 13px; color: var(--text-light);">
-                        Email pengesahan telah dihantar ke email anda. Sila semak Folder Spam jika tidak menerima.
-                    </p>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn-primary btn-full" onclick="resetForm()">🔄 Hantar Permohonan Baru</button>
                 </div>
             </div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
-</html>
+</html>                  
