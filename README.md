@@ -1,34 +1,45 @@
-<img src="IMG_6239.jpeg" alt="Adawang Customer Service" width="180" style="display: block; margin: 0 auto 10px auto;">Adawang Customer Service Portal
+<p align="center">
+  <img src="IMG_6239.jpeg" alt="Adawang Customer Service" width="180">
+</p>
 
-Website portal pembayaran pinjaman untuk pelanggan Adawang dengan fitur live chat terintegrasi dan peringatan keselamatan.
+<h1 align="center">Adawang Customer Service Portal</h1>
+
+<p align="center">
+  Website portal pembayaran pinjaman untuk pelanggan Adawang dengan fitur live chat terintegrasi dan peringatan keselamatan.
+</p>
+
+---
 
 ## 🎯 Fitur Utama
 
 ### ✅ Pembayaran Pinjaman
-- Input nama peminjam, nombor KP/akaun, dan jumlah bayaran
-- Scan QR Code DuitNow yang sudah disediakan (admin yang letak)
-- Ringkasan pembayaran real-time
-- Notifikasi berjaya
+* Input nama peminjam, nombor KP/akaun, dan jumlah bayaran
+* Scan QR Code DuitNow yang sudah disediakan (admin yang letak)
+* Ringkasan pembayaran real-time
+* Notifikasi berjaya
 
 ### 💬 Live Chat Support (Crisp)
-- Integrasi live chat gratis menggunakan Crisp
-- Agen dapat melayani pelanggan 24/7
-- Chat tersimpan untuk referensi
+* Integrasi live chat gratis menggunakan Crisp
+* Agen dapat melayani pelanggan 24/7
+* Chat tersimpan untuk referensi
 
 ### ⚠️ Peringatan Keselamatan
-- Pop-up otomatis peringatan penipuan dengan 5 ayat:
-  1. 🔒 Jangan berkongsi info peribadi seperti nombor KP atau kata laluan
+* Pop-up otomatis peringatan penipuan dengan 5 ayat:
+  1. 🔒 Jangan berkongsi info peribadi seperti nombor KP atau kata lauwan
   2. ✅ Hanya terima pembayaran melalui DuitNow di platform rasmi
   3. 📞 Hati-hati dengan panggilan atau mesej palsu
   4. 📱 Hanya scan QR Code DuitNow yang disediakan di website rasmi
   5. 🚨 Lapor jika disyaki ditipu
+* Pop-up pencapaian Adawang (50,000 peminjam)
+* Animasi menarik dan responsif
 
-- Pop-up pencapaian Adawang (50,000 peminjam)
-- Animasi menarik dan responsif
+---
 
 ## 📋 Persyaratan
 
 Tidak ada instalasi rumit! Website ini 100% HTML, CSS, dan JavaScript vanilla.
+
+---
 
 ## 🚀 Cara Menggunakan
 
@@ -43,27 +54,22 @@ Tidak ada instalasi rumit! Website ini 100% HTML, CSS, dan JavaScript vanilla.
 1. Edit file `index.html`
 2. Cari line: `<img src="qr-duitnow.png" alt="QR Code DuitNow Adawang" class="qr-image">`
 3. Gantikan `qr-duitnow.png` dengan:
-   - **Pilihan A:** Upload gambar QR Code ke repository dengan nama `qr-duitnow.png`
-   - **Pilihan B:** Guna URL gambar: `src="https://link-qr-code-anda.com/qr.png"`
+   * **Pilihan A:** Upload gambar QR Code ke repository dengan nama `qr-duitnow.png`
+   * **Pilihan B:** Guna URL gambar: `src="https://link-qr-code-anda.com/qr.png"`
 
 ### Langkah 3: Deploy Website
 
-**Pilihan A: GitHub Pages (Gratis & Mudah)**
+#### Pilihan A: GitHub Pages (Gratis & Mudah)
 1. Di repository, pergi ke **Settings** (gear icon)
 2. Scroll ke **Pages**
 3. Pilih branch **main** sebagai source
-4. Klik Save
-5. Website anda akan live di: `https://adawang.github.io/adawang.customerservice`
+4. Klik **Save**
+5. Website anda akan live di: `https://adawangcustomerservice.github.io/adawang.customerservice/`
 
-**Pilihan B: Netlify (Gratis)**
+#### Pilihan B: Netlify (Gratis)
 1. Pergi ke [Netlify](https://netlify.com)
 2. Drag & drop folder website atau connect GitHub
 3. Siap digunakan dalam beberapa saat
 
-**Pilihan C: Vercel (Gratis)**
+#### Pilihan C: Vercel (Gratis)
 1. Pergi ke [Vercel](https://vercel.com)
-2. Import repository dari GitHub
-3. Siap digunakan
-
-## 📁 Struktur File
-
