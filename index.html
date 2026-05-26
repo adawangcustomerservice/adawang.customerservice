@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adawang - Portal Pembayaran Pinjaman</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Pop-up Peringatan Penipuan -->
+    <div id="warningPopup" class="popup-overlay">
+        <div class="popup-content warning-popup">
+            <div class="popup-header warning-header">
+                <h2>⚠️ Peringatan Penting - Bahaya Penipuan</h2>
+            </div>
+            <div class="popup-body">
+                <ul class="warning-list">
+                    <li>🔒 Jangan berkongsi info peribadi seperti nombor KP atau kata laluan dengan sesiapa</li>
+                    <li>✅ Hanya terima pembayaran melalui DuitNow di platform rasmi Adawang ini sahaja</li>
+                    <li>📞 Hati-hati dengan panggilan atau mesej palsu yang mengaku dari Adawang</li>
+                    <li>📱 Hanya scan QR Code DuitNow yang disediakan di website rasmi ini</li>
+                    <li>🚨 Lapor kepada kami terus-terus jika anda disyaki ditipu atau dirompak</li>
+                </ul>
+            </div>
+            <button class="popup-btn" onclick="closeWarningPopup()">Saya Faham dan Lanjut</button>
+        </div>
+    </div>
+
+    <!-- Pop-up Pencapaian Adawang -->
+    <div id="achievementPopup" class="popup-overlay">
+        <div class="popup-content achievement-popup">
+            <div class="popup-header achievement-header">
+                <h2>🎉 Pencapaian Adawang</h2>
+            </div>
+            <div class="popup-body">
+                <p class="achievement-text">Adawang telah meluluskan pinjaman kepada</p>
+                <p class="achievement-number">50,000 orang</p>
+                <p class="achievement-subtitle">Terima kasih atas kepercayaan anda!</p>
+            </div>
+            <button class="popup-btn" onclick="closeAchievementPopup()">Tutup</button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🏦 Adawang</h1>
+                <p>Portal Pembayaran Pinjaman</p>
+            </div>
+            <div class="header-actions">
+                <button class="support-btn" onclick="openLiveChat()">💬 Live Support</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h2>Selamat Datang ke Portal Pembayaran Adawang</h2>
+            <p>Bayar pinjaman anda dengan mudah menggunakan QR Code DuitNow. Cepat, selamat, dan mudah!</p>
+        </section>
+
+        <!-- Payment Section -->
+        <section class="payment-section">
+            <div class="payment-card">
+                <h3>📋 Maklumat Peminjam</h3>
+                <div class="form-group">
+                    <label for="icNumber">Nombor Kad Pengenalan / Nombor Akaun:</label>
+                    <input type="text" id="icNumber" placeholder="Cth: 123456-78-9012" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="borrowerName">Nama Peminjam:</label>
+                    <input type="text" id="borrowerName" placeholder="Masukkan nama anda" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="loanAmount">Jumlah Bayaran (RM):</label>
+                    <input type="number" id="loanAmount" placeholder="Cth: 500.00" step="0.01" class="form-input">
+                </div>
+            </div>
+
+            <!-- DuitNow QR Section -->
+            <div class="payment-card">
+                <h3>📱 Scan QR Code DuitNow untuk Bayar</h3>
+                <p class="info-text">Sila scan QR Code DuitNow di bawah menggunakan banking app anda:</p>
+                
+                <div class="qr-section">
+                    <div class="qr-display-area">
+                        <img src="qr-duitnow.png" alt="QR Code DuitNow Adawang" class="qr-image">
+                        <p class="qr-instruction">Gunakan camera atau banking app untuk scan QR Code ini</p>
+                    </div>
+                </div>
+
+                <div class="payment-info">
+                    <p><strong>💡 Langkah-Langkah Pembayaran:</strong></p>
+                    <ol style="text-align: left; padding-left: 20px; line-height: 1.8;">
+                        <li>Masukkan nombor KP dan nama anda di atas</li>
+                        <li>Masukkan jumlah bayaran yang ingin dibayar</li>
+                        <li>Buka banking app anda (FPX, Maybank, CIMB dll)</li>
+                        <li>Pilih "Scan QR Code" atau "DuitNow"</li>
+                        <li>Scan QR Code di atas dan selesaikan pembayaran</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- Payment Confirmation -->
+            <div class="payment-card">
+                <h3>✅ Sahkan Pembayaran</h3>
+                <div class="payment-summary">
+                    <div class="summary-item">
+                        <span>Peminjam:</span>
+                        <span id="summaryName" class="summary-value">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>No. KP:</span>
+                        <span id="summaryIC" class="summary-value">-</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Jumlah Bayaran:</span>
+                        <span id="summaryAmount" class="summary-value">RM 0.00</span>
+                    </div>
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="confirmPayment" class="checkbox-input">
+                    <label for="confirmPayment" class="checkbox-label">
+                        Saya mengesahkan bahawa semua maklumat adalah betul dan sudah melakukan pembayaran
+                    </label>
+                </div>
+
+                <button class="submit-btn" onclick="submitPayment()">
+                    ✅ Selesaikan
+                </button>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section class="support-section">
+            <h3>❓ Perlu Bantuan?</h3>
+            <p>Hubungi agen live support kami - tersedia 24/7!</p>
+            <button class="support-btn-large" onclick="openLiveChat()">
+                💬 Chat Dengan Agen Sekarang
+            </button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Adawang. Semua hak terpelihara.</p>
+            <p>Portal Pembayaran Pinjaman Aman | DuitNow Verified</p>
+        </div>
+    </footer>
+
+    <!-- Crisp Live Chat Integration -->
+    <script type="text/javascript">
+        window.$crisp=[];
+        window.CRISP_WEBSITE_ID="YOUR_CRISP_ID_HERE";
+        (function(){
+            d=document;
+            s=d.createElement("script");
+            s.src="https://client.crisp.chat/l.js";
+            s.async=1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+
+        function openLiveChat() {
+            if (window.$crisp) {
+                window.$crisp.push(["do", "chat:open"]);
+            }
+        }
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
